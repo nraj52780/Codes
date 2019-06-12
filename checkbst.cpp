@@ -81,3 +81,32 @@ bool isBST(BinaryTreeNode<int> *root){
         
 
 }
+-----------------------------------------------------------
+#include<bits/stdc++.h>
+bool fun(BinaryTreeNode<int> *root,int mx,int mn)
+{
+    
+    if(root==NULL) return true;
+    
+    if(root->data<mn || root->data>mx)
+        return false;
+    
+    bool left=fun(root->left,root->data,mn);
+    bool right=fun(root->right,mx,root->data);
+    
+    return left&&right;
+    
+}
+bool isBST(BinaryTreeNode<int> *root){
+       /* Don't write main().
+	* Don't read input, it is passed as function argument.
+	* Return output and don't print it.
+	* Taking input and printing output is handled automatically.
+	*/
+   bool res=fun(root,INT_MAX,INT_MIN);
+    return res;
+  
+     
+        
+
+}
